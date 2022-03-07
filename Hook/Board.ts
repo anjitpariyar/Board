@@ -18,3 +18,11 @@ export const usePagination = ({
 
   return paginationRange;
 };
+
+export const paginationController = ({ page }) => {
+  const pageChange = useMemo(() => {
+    // Our implementation logic will go here
+    const newPage = page;
+    return { newPage };
+  }, [page]);
+};

@@ -1,6 +1,6 @@
 import React from "react";
-import { usePagination } from "Hook/Board";
 import styled from "styled-components";
+import { usePagination } from "Hook/Board";
 
 interface Props {
   onPageChange?: any;
@@ -22,29 +22,13 @@ const Pagination = ({ onPageChange, style, currentPage, pageSize }: Props) => {
 
   return (
     <>
-      <div>
-        {" "}
-        <pre>
-          <code>
-            {JSON.stringify(
-              {
-                pageSize,
-                currentPage,
-                totalPageCount,
-              },
-              null,
-              2
-            )}
-          </code>
-        </pre>
-      </div>
       <Ul>
         {[...Array(totalPageCount)].map((count, index) => {
           return (
             <Li
               key={index}
-              active={index === currentPage}
-              onClick={() => onPageChange(index)}
+              active={index === currentPage - 1}
+              onClick={() => onPageChange(index + 1)}
             >
               {index + 1}
             </Li>

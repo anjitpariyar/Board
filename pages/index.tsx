@@ -4,10 +4,19 @@ import { useState } from "react";
 
 const IndexPage = () => {
   // crate a instance with usePagination
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1); // start with one
   let pageSize = 10;
+
+  //on page change
+  // for now this is a page controller
   const onPageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const paginationOptions = {
+    currentPage: currentPage, //required
+    pageSize: pageSize, //required
+    onPageChange: onPageChange, //required
   };
 
   return (
@@ -19,11 +28,23 @@ const IndexPage = () => {
       {/* for now its a only wat to connect pagination and table */}
 
       <Table currentPage={currentPage} pageSize={pageSize} />
-      <Pagination
-        currentPage={currentPage}
-        pageSize={pageSize}
-        onPageChange={onPageChange}
-      />
+      <Pagination {...paginationOptions} />
+
+      <div>
+        {" "}
+        <pre>
+          <code>
+            {JSON.stringify(
+              {
+                pageSize,
+                currentPage,
+              },
+              null,
+              2
+            )}
+          </code>
+        </pre>
+      </div>
     </>
   );
 };
