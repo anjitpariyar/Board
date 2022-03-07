@@ -19,6 +19,9 @@ export const usePagination = ({
   return paginationRange;
 };
 
+/**
+ *
+ */
 export const paginationController = ({ page }) => {
   const pageChange = useMemo(() => {
     // Our implementation logic will go here
@@ -27,6 +30,11 @@ export const paginationController = ({ page }) => {
   }, [page]);
 };
 
+/**
+ *
+ * @param param0
+ * @returns
+ */
 export const paginationStyle = ({
   color = "#000",
   backgroundColor = "transparent",
@@ -61,4 +69,17 @@ export const paginationStyle = ({
   `;
 
   return { Ul, Li };
+};
+
+export const useTable = ({ currentPage = 1, data, pageSize = 10 }) => {
+  const tableData = useMemo(() => {
+    // data slice
+    const firstPageIndex = (currentPage - 1) * pageSize;
+    const lastPageIndex = firstPageIndex + pageSize;
+    const pageData = data.slice(firstPageIndex, lastPageIndex);
+    const totalData = data.length;
+    return { pageData, totalData };
+  }, [currentPage]);
+  debugger;
+  return tableData;
 };

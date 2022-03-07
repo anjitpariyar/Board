@@ -12,10 +12,10 @@ interface Props {
   data: any[];
 }
 
-const Pagination = ({ onPageChange, currentPage, data }: Props) => {
+const Pagination = ({ onPageChange, currentPage, data, pageSize }: Props) => {
   const Instance = usePagination({
     totalCount: data.length, //required
-    pageSize: 10, // default 10
+    pageSize: pageSize, // default 10
     currentPage: 0, // default 0
   });
 
@@ -27,6 +27,8 @@ const Pagination = ({ onPageChange, currentPage, data }: Props) => {
   // activeBackground = "rgba(0, 0, 0, 0.04)",
   // activeColor = "#000",
   const styleInstance = paginationStyle({});
+
+  // warning comming from this
   const { Ul, Li } = styleInstance;
 
   return (
