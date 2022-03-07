@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { usePagination, paginationStyle } from "Hook/Board";
 
 interface Props {
@@ -12,9 +11,16 @@ interface Props {
   data: any[];
 }
 
-const styleInstance = paginationStyle({});
+// option
+// color = "#000",
+//   backgroundColor = "transparent",
+//   activeBackground = "rgba(0, 0, 0, 0.04)",
+//   activeColor = "#000",
+//align = "center",
+//margin: "20px 0";
+//custom style
 
-// warning comming from this
+const styleInstance = paginationStyle({ customStyle: { padding: "20px" } });
 const { Ul, Li } = styleInstance;
 
 const Pagination = ({ onPageChange, currentPage, data, pageSize }: Props) => {
@@ -52,5 +58,3 @@ const Pagination = ({ onPageChange, currentPage, data, pageSize }: Props) => {
 };
 
 export default Pagination;
-
-const UUl = styled(Ul)``;

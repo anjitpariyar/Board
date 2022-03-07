@@ -40,10 +40,25 @@ export const paginationStyle = ({
   backgroundColor = "transparent",
   activeBackground = "rgba(0, 0, 0, 0.04)",
   activeColor = "#000",
+  align = "center",
+  margin = "20px 0",
+  customStyle,
 }) => {
   const Ul = styled.ul`
     display: flex;
     list-style-type: none;
+    padding: 0;
+    margin: margin;
+
+    justify-content:${
+      align === "center"
+        ? "center"
+        : align === "right"
+        ? "flex-end"
+        : "flex-start"
+    }};
+    ${customStyle}
+
   `;
 
   const Li = styled.li<{ active?: boolean }>`
