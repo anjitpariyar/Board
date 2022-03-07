@@ -4,8 +4,11 @@ const IndexPage = () => {
 
   return (
     <>
+      {/*
+        props
+
+      */}
       <Pagination />
-      <p>Hello World</p>
     </>
   );
 };
