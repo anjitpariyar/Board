@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo } from "react";
-import { sampleTablePropsData } from "utils/sample-data";
 
-const Table = ({ currentPage, pageSize }) => {
+const Table = ({ currentPage, pageSize, data }) => {
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
-    return sampleTablePropsData.slice(firstPageIndex, lastPageIndex);
+    return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
   return (
     <table>

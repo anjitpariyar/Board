@@ -1,6 +1,7 @@
 import Pagination from "components/Pagination";
 import Table from "components/Table";
 import { useState } from "react";
+import { sampleTablePropsData } from "utils/sample-data";
 
 const IndexPage = () => {
   // crate a instance with usePagination
@@ -17,6 +18,7 @@ const IndexPage = () => {
     currentPage: currentPage, //required
     pageSize: pageSize, //required
     onPageChange: onPageChange, //required
+    data: sampleTablePropsData, //required
   };
 
   return (
@@ -27,7 +29,11 @@ const IndexPage = () => {
       */}
       {/* for now its a only wat to connect pagination and table */}
 
-      <Table currentPage={currentPage} pageSize={pageSize} />
+      <Table
+        currentPage={currentPage}
+        pageSize={pageSize}
+        data={sampleTablePropsData}
+      />
       <Pagination {...paginationOptions} />
 
       <div>
