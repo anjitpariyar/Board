@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { sampleTablePropsData } from "utils/sample-data";
 
-const Table = () => {
+const Table = ({ currentPage, pageSize }, value) => {
+  console.log(value);
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = currentPage * pageSize;
+    const lastPageIndex = firstPageIndex + pageSize;
+    return sampleTablePropsData.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
   return (
     <table>
       <thead>
@@ -13,7 +19,7 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {sampleTablePropsData.map((item) => {
+        {currentTableData.map((item) => {
           return (
             <tr key={item.id}>
               <td>{item.id}</td>

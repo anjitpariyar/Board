@@ -11,14 +11,14 @@ interface Props {
   style?: any;
 }
 
-const Pagination = ({ onPageChange, style }: Props) => {
+const Pagination = ({ onPageChange, style, currentPage, pageSize }: Props) => {
   const Instance = usePagination({
     totalCount: 100, //required
     pageSize: 10, // default 10
     currentPage: 0, // default 0
   });
 
-  const { totalPageCount, pageSize, currentPage } = Instance;
+  const { totalPageCount } = Instance;
 
   return (
     <>
