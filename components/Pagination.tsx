@@ -8,7 +8,7 @@ interface Props {
   currentPage?: any;
   pageSize?: any;
   style?: any;
-  data: any[];
+  totalData: number;
 }
 
 // option
@@ -23,9 +23,14 @@ interface Props {
 const styleInstance = paginationStyle({ customStyle: { padding: "20px" } });
 const { Ul, Li } = styleInstance;
 
-const Pagination = ({ onPageChange, currentPage, data, pageSize }: Props) => {
+const Pagination = ({
+  onPageChange,
+  currentPage,
+  pageSize,
+  totalData,
+}: Props) => {
   const Instance = usePagination({
-    totalCount: data.length, //required
+    totalCount: totalData, // generated from table
     pageSize: pageSize, // default 10
     currentPage: 0, // default 0
   });

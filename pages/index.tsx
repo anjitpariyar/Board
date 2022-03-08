@@ -20,16 +20,16 @@ const IndexPage = () => {
     pageSize: pageSize, //default is 10
   };
 
+  //initilizing table hook
+  const { pageData, totalData } = useTable({ ...tableOption });
   // pagination option
   const paginationOptions = {
     currentPage: currentPage, //required
     pageSize: pageSize, //required
     onPageChange: onPageChange, //required
-    data: sampleTablePropsData, //required
+    totalData: totalData, //required
   };
 
-  //initilizing table hook
-  const { pageData, totalData } = useTable({ ...tableOption });
   return (
     <>
       {/*
