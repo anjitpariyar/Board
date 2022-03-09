@@ -14,6 +14,7 @@ const IndexPage = () => {
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
+
   const tableOption = {
     currentPage: currentPage, //defult 1
     data: sampleTablePropsData, //required

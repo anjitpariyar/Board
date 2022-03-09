@@ -46,6 +46,7 @@ const Pagination = ({
   return (
     <>
       <Ul>
+        <li>{"<"}</li>
         {[...Array(totalPageCount)].map((count, index) => {
           return (
             <Li
@@ -57,6 +58,7 @@ const Pagination = ({
             </Li>
           );
         })}
+        <li>{">"}</li>
       </Ul>
     </>
   );
