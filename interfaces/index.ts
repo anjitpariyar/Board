@@ -24,6 +24,7 @@ export interface PaginationOptions {
   totalData: any; //required'
   prev: any; // default is <,
   next: any; // default is >,
-  paginationSize?: number;
-  trimmer?: boolean;
+  paginationSize?: number; //default is 5
+  trimmer?: boolean; // default is true
+  goto?: boolean; // default is true, that show an example
 }

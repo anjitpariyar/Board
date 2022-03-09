@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { usePagination, paginationStyle } from "Hook/Board";
 import { PaginationOptions } from "interfaces";
+import Goto from "./Goto";
 
 // option
 // color = "#000",
@@ -23,6 +24,7 @@ const Pagination = ({
   next = <span>{">"}</span>,
   paginationSize = 5,
   trimmer = true,
+  goto = true,
 }: PaginationOptions) => {
   const [range, setRange]: any[] = useState([]);
 
@@ -64,10 +66,9 @@ const Pagination = ({
       end = totalPageCount - 1;
     }
     let tempRange = [...Array(end - start + 1).keys()].map((x) => x + start);
-    console.log(tempRange);
     setRange([...tempRange]);
     console.log("range", range);
-  }, [currentPage, totalPageCount]);
+  }, [currentPage]);
 
   return (
     <>
@@ -134,6 +135,9 @@ const Pagination = ({
           {next}
         </Button>
       </Ul>
+      {goto && (
+        <Goto totalPageCount={totalPageCount} onPageChange={onPageChange} />
+      )}
     </>
   );
 };
