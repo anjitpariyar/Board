@@ -12,7 +12,7 @@ import { PaginationOptions } from "interfaces";
 //custom style
 
 const styleInstance = paginationStyle({ customStyle: { padding: "20px" } });
-const { Ul, Li } = styleInstance;
+const { Ul, Li, Button } = styleInstance;
 
 const Pagination = ({
   onPageChange,
@@ -39,12 +39,12 @@ const Pagination = ({
   return (
     <>
       <Ul>
-        <Li
-          disabled={currentPage === 0}
+        <Button
+          disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
         >
           {prev}
-        </Li>
+        </Button>
         {[...Array(totalPageCount)].map((count, index) => {
           return (
             <Li
@@ -56,12 +56,12 @@ const Pagination = ({
             </Li>
           );
         })}
-        <Li
+        <Button
           disabled={currentPage === totalPageCount}
           onClick={() => onPageChange(currentPage + 1)}
         >
           {next}
-        </Li>
+        </Button>
       </Ul>
     </>
   );

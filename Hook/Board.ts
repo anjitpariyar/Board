@@ -30,6 +30,21 @@ export const paginationController = ({ page }) => {
   }, [page]);
 };
 
+export const useTable = ({ currentPage = 1, data, pageSize = 10 }) => {
+  const tableData = useMemo(() => {
+    // data slice
+    const firstPageIndex = (currentPage - 1) * pageSize;
+    const lastPageIndex = firstPageIndex + pageSize;
+    const pageData = data.slice(firstPageIndex, lastPageIndex);
+    const totalData = data.length;
+    return { pageData, totalData };
+  }, [currentPage]);
+  debugger;
+  return tableData;
+};
+
+// style inside board not sure its a good idea
+
 /**
  *
  * @param param0
@@ -72,26 +87,18 @@ export const paginationStyle = ({
     line-height: 1.43;
     font-size: 13px;
     min-width: 32px;
+    cursor: pointer;
     background-color: ${({ active }) =>
       active ? activeBackground : backgroundColor};
-    cursor: pointer;
+
     &:hover {
       background-color: ${activeBackground};
     }
   `;
 
-  return { Ul, Li };
-};
+  const Button = styled(Li)<{ disabled?: boolean }>`
+    cursor: ${({ disabled }) => disabled && "not-allowed"};
+  `;
 
-export const useTable = ({ currentPage = 1, data, pageSize = 10 }) => {
-  const tableData = useMemo(() => {
-    // data slice
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    const pageData = data.slice(firstPageIndex, lastPageIndex);
-    const totalData = data.length;
-    return { pageData, totalData };
-  }, [currentPage]);
-  debugger;
-  return tableData;
+  return { Ul, Li, Button };
 };
