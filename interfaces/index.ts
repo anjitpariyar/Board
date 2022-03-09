@@ -16,3 +16,12 @@ export interface PaginationProps {
   pageSize: number;
   currentPage: number;
 }
+
+export interface PaginationOptions {
+  currentPage: number; //required
+  pageSize: number; //required
+  onPageChange: any; //required
+  totalData: any; //required'
+  prev: any; // default is <,
+  next: any; // default is >,
+}

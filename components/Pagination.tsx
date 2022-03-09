@@ -1,15 +1,6 @@
 import React from "react";
 import { usePagination, paginationStyle } from "Hook/Board";
-
-interface Props {
-  onPageChange?: any;
-  totalCount?: any;
-  siblingCount?: any;
-  currentPage?: any;
-  pageSize?: any;
-  style?: any;
-  totalData: number;
-}
+import { PaginationOptions } from "interfaces";
 
 // option
 // color = "#000",
@@ -28,11 +19,13 @@ const Pagination = ({
   currentPage,
   pageSize,
   totalData,
-}: Props) => {
+  prev = <span>{"<"}</span>,
+  next = <span>{">"}</span>,
+}: PaginationOptions) => {
   const Instance = usePagination({
     totalCount: totalData, // generated from table
     pageSize: pageSize, // default 10
-    currentPage: 0, // default 0
+    currentPage: 1, // default 1
   });
 
   const { totalPageCount } = Instance;
@@ -46,7 +39,12 @@ const Pagination = ({
   return (
     <>
       <Ul>
-        <li>{"<"}</li>
+        <Li
+          disabled={currentPage === 0}
+          onClick={() => onPageChange(currentPage - 1)}
+        >
+          {prev}
+        </Li>
         {[...Array(totalPageCount)].map((count, index) => {
           return (
             <Li
@@ -58,7 +56,12 @@ const Pagination = ({
             </Li>
           );
         })}
-        <li>{">"}</li>
+        <Li
+          disabled={currentPage === totalPageCount}
+          onClick={() => onPageChange(currentPage + 1)}
+        >
+          {next}
+        </Li>
       </Ul>
     </>
   );

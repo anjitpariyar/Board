@@ -4,6 +4,9 @@ import { useState } from "react";
 import { sampleTablePropsData } from "utils/sample-data";
 import { useTable } from "Hook/Board";
 
+// type import
+import { PaginationOptions } from "interfaces";
+
 const IndexPage = () => {
   // crate a instance with usePagination
   const [currentPage, setCurrentPage] = useState<number>(1); // start with one
@@ -24,11 +27,13 @@ const IndexPage = () => {
   //initilizing table hook
   const { pageData, totalData } = useTable({ ...tableOption });
   // pagination option
-  const paginationOptions = {
+  const paginationOptions: PaginationOptions = {
     currentPage: currentPage, //required
     pageSize: pageSize, //required
     onPageChange: onPageChange, //required
-    totalData: totalData, //required
+    totalData: totalData, //required'
+    prev: <span>{"<"}</span>, // default is <,
+    next: <span>{">"}</span>, // default is >,
   };
 
   return (
