@@ -36,12 +36,24 @@ const Pagination = ({
   // activeBackground = "rgba(0, 0, 0, 0.04)",
   // activeColor = "#000",
 
+  const PrevFunc = () => {
+    if (currentPage !== 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
+  const NextFunc = () => {
+    if (currentPage !== totalPageCount) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
   return (
     <>
       <Ul>
         <Button
           disabled={currentPage === 1}
-          onClick={() => onPageChange(currentPage - 1)}
+          onClick={() => PrevFunc()}
+          key="-1"
         >
           {prev}
         </Button>
@@ -58,7 +70,8 @@ const Pagination = ({
         })}
         <Button
           disabled={currentPage === totalPageCount}
-          onClick={() => onPageChange(currentPage + 1)}
+          onClick={() => NextFunc()}
+          key={totalPageCount + 10}
         >
           {next}
         </Button>

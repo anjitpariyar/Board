@@ -88,6 +88,12 @@ export const paginationStyle = ({
     font-size: 13px;
     min-width: 32px;
     cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
     background-color: ${({ active }) =>
       active ? activeBackground : backgroundColor};
 
