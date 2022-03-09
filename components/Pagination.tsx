@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { usePagination, paginationStyle } from "Hook/Board";
 import { PaginationOptions } from "interfaces";
 
@@ -21,7 +21,10 @@ const Pagination = ({
   totalData,
   prev = <span>{"<"}</span>,
   next = <span>{">"}</span>,
+  paginationSize = 5,
 }: PaginationOptions) => {
+  const [range, setRange]: number[] = useState([]);
+
   const Instance = usePagination({
     totalCount: totalData, // generated from table
     pageSize: pageSize, // default 10
@@ -46,6 +49,12 @@ const Pagination = ({
       onPageChange(currentPage + 1);
     }
   };
+
+  useEffect(() => {
+    let start = currentPage - 2;
+    let end = currentPage + 2;
+    const range = [...Array(end - start + 1).keys()].map((x) => x + start);
+  }, [currentPage]);
 
   return (
     <>

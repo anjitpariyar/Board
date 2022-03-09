@@ -24,4 +24,5 @@ export interface PaginationOptions {
   totalData: any; //required'
   prev: any; // default is <,
   next: any; // default is >,
+  paginationSize?: number;
 }
