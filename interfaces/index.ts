@@ -25,4 +25,5 @@ export interface PaginationOptions {
   prev: any; // default is <,
   next: any; // default is >,
   paginationSize?: number;
+  trimmer?: boolean;
 }

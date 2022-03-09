@@ -79,33 +79,53 @@ const Pagination = ({
         >
           {prev}
         </Button>
-        <Li key={0} active={currentPage === 1} onClick={() => onPageChange(1)}>
-          1
-        </Li>
-        {currentPage <= 2 && <span>...</span>}
-        {range.length > 0 &&
-          range.map((count) => {
+        {trimmer ? (
+          <>
+            <Li
+              key={0}
+              active={currentPage === 1}
+              onClick={() => onPageChange(1)}
+            >
+              1
+            </Li>
+            {currentPage <= 2 && <span>...</span>}
+            {range.length > 0 &&
+              range.map((count) => {
+                return (
+                  <Li
+                    key={count}
+                    active={count === currentPage}
+                    onClick={() => onPageChange(count)}
+                  >
+                    {count}
+                  </Li>
+                );
+              })}
+            {currentPage <= 2 && <span>...</span>}
+
+            <span>...</span>
+
+            <Li
+              key={totalPageCount}
+              active={currentPage === totalPageCount}
+              onClick={() => onPageChange(totalPageCount)}
+            >
+              {totalPageCount}
+            </Li>
+          </>
+        ) : (
+          [...Array(totalPageCount)].map((count, index) => {
             return (
               <Li
-                key={count}
-                active={count === currentPage}
-                onClick={() => onPageChange(count)}
+                key={index}
+                active={index === currentPage - 1}
+                onClick={() => onPageChange(index + 1)}
               >
-                {count}
+                {index + 1}
               </Li>
             );
-          })}
-        {currentPage <= 2 && <span>...</span>}
-
-        <span>...</span>
-
-        <Li
-          key={totalPageCount}
-          active={currentPage === totalPageCount}
-          onClick={() => onPageChange(totalPageCount)}
-        >
-          {totalPageCount}
-        </Li>
+          })
+        )}
         <Button
           disabled={currentPage === totalPageCount}
           onClick={() => NextFunc()}
