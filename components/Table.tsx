@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
 
-const Table = ({ data }) => {
+const Table = ({ data, searchValue }) => {
   return (
     <TableWrapper>
       <Thead>

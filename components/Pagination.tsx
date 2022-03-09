@@ -68,7 +68,7 @@ const Pagination = ({
     let tempRange = [...Array(end - start + 1).keys()].map((x) => x + start);
     setRange([...tempRange]);
     console.log("range", range);
-  }, [currentPage]);
+  }, [currentPage, totalPageCount]);
 
   return (
     <>
@@ -89,7 +89,7 @@ const Pagination = ({
             >
               1
             </Li>
-            {currentPage <= 2 && <span>...</span>}
+            {currentPage > 2 && <span>...</span>}
             {range.length > 0 &&
               range.map((count) => {
                 return (
@@ -102,9 +102,7 @@ const Pagination = ({
                   </Li>
                 );
               })}
-            {currentPage <= 2 && <span>...</span>}
-
-            <span>...</span>
+            {currentPage < totalPageCount - 2 && <span>...</span>}
 
             <Li
               key={totalPageCount}
