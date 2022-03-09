@@ -22,8 +22,9 @@ const Pagination = ({
   prev = <span>{"<"}</span>,
   next = <span>{">"}</span>,
   paginationSize = 5,
+  trimmer = true,
 }: PaginationOptions) => {
-  const [range, setRange]: number[] = useState([]);
+  const [range, setRange]: any[] = useState([]);
 
   const Instance = usePagination({
     totalCount: totalData, // generated from table
@@ -51,10 +52,22 @@ const Pagination = ({
   };
 
   useEffect(() => {
-    let start = currentPage - 2;
-    let end = currentPage + 2;
-    const range = [...Array(end - start + 1).keys()].map((x) => x + start);
-  }, [currentPage]);
+    let start = currentPage - 1;
+    let end = currentPage + 1;
+
+    if (start <= 1) {
+      end = end + 2 - Math.abs(start);
+      start = 2;
+    }
+    if (end >= totalPageCount) {
+      start = start - 1 - (end - totalPageCount);
+      end = totalPageCount - 1;
+    }
+    let tempRange = [...Array(end - start + 1).keys()].map((x) => x + start);
+    console.log(tempRange);
+    setRange([...tempRange]);
+    console.log("range", range);
+  }, [currentPage, totalPageCount]);
 
   return (
     <>
@@ -66,17 +79,33 @@ const Pagination = ({
         >
           {prev}
         </Button>
-        {[...Array(totalPageCount)].map((count, index) => {
-          return (
-            <Li
-              key={index}
-              active={index === currentPage - 1}
-              onClick={() => onPageChange(index + 1)}
-            >
-              {index + 1}
-            </Li>
-          );
-        })}
+        <Li key={0} active={currentPage === 1} onClick={() => onPageChange(1)}>
+          1
+        </Li>
+        {currentPage <= 2 && <span>...</span>}
+        {range.length > 0 &&
+          range.map((count) => {
+            return (
+              <Li
+                key={count}
+                active={count === currentPage}
+                onClick={() => onPageChange(count)}
+              >
+                {count}
+              </Li>
+            );
+          })}
+        {currentPage <= 2 && <span>...</span>}
+
+        <span>...</span>
+
+        <Li
+          key={totalPageCount}
+          active={currentPage === totalPageCount}
+          onClick={() => onPageChange(totalPageCount)}
+        >
+          {totalPageCount}
+        </Li>
         <Button
           disabled={currentPage === totalPageCount}
           onClick={() => NextFunc()}
