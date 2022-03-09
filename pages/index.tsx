@@ -46,6 +46,7 @@ const IndexPage = () => {
 
       <Table data={pageData} />
       <Pagination {...paginationOptions} />
+      {/* search */}
 
       <div>
         {" "}
