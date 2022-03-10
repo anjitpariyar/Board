@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 const Table = ({ data, searchValue }) => {
   return (
@@ -17,7 +18,11 @@ const Table = ({ data, searchValue }) => {
           return (
             <Tr key={item.id}>
               <Td>{item.id}</Td>
-              <Td>{item.title}</Td>
+              <Td>
+                <Link href={"/product/" + item.id}>
+                  <a>{item.title}</a>
+                </Link>
+              </Td>
               <Td>{item.writer}</Td>
               <Td>{item.viewcount}</Td>
             </Tr>
