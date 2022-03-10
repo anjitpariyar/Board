@@ -89,7 +89,7 @@ const Pagination = ({
             >
               1
             </Li>
-            {currentPage > 2 && <span>...</span>}
+            {currentPage > 3 && <span>...</span>}
             {range.length > 0 &&
               range.map((count) => {
                 return (
