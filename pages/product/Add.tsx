@@ -71,7 +71,8 @@ export default function () {
         </div>
 
         {/* draft part */}
-        <EditorPost />
+        {/* <EditorPost /> */}
+        
       </Form>
     </>
   );
