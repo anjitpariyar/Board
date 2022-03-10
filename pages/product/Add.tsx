@@ -1,9 +1,8 @@
-import React from "react";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { Editor, EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
+import Head from "next/head";
+import React, { useState, useCallback } from "react";
+import EditorPost from "components/EditorPost";
 
 export default function () {
   const [data, setData] = useState({
@@ -20,10 +19,7 @@ export default function () {
       setData({ ...data, [name]: value });
     }
   };
-
-  const [editorState, setEditorState] = React.useState(() =>
-    EditorState.createEmpty()
-  );
+  // draft
 
   const Submit = (e) => {
     e.preventDefault();
@@ -31,46 +27,53 @@ export default function () {
   };
 
   return (
-    <Form onSubmit={Submit}>
-      {/* top part */}
-      <div>
-        <Flex>
+    <>
+      <Head>
+        <title>Add Post</title>
+      </Head>
+      <Form onSubmit={Submit}>
+        {/* top part */}
+        <div>
+          <Flex>
+            <Input
+              placeholder="닉네임"
+              name="name"
+              type="text"
+              value={name}
+              onChange={handleChange}
+            />
+            <Input
+              placeholder="비밀번호"
+              name="password"
+              type="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </Flex>
           <Input
-            placeholder="닉네임"
-            name="name"
+            placeholder="제목을 입력해 주세요."
+            name="subject"
             type="text"
-            value={name}
+            width="100%"
+            value={subject}
             onChange={handleChange}
           />
-          <Input
-            placeholder="비밀번호"
-            name="password"
-            type="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </Flex>
-        <Input
-          placeholder="제목을 입력해 주세요."
-          name="subject"
-          type="text"
-          width="100%"
-          value={subject}
-          onChange={handleChange}
-        />
-        <div style={{ margin: "2em 0", opacity: "0.6" }}>
-          <small>쉬운 비밀번호를 입력하면 타인의 수정, 삭제가 쉽습니다.</small>
-          <br />
-          <small>
-            음란물, 차별, 비하, 혐오 및 초상권, 저작권 침해 게시물은 민,
-            형사상의 책임을 질 수 있습니다.
-          </small>
+          <div style={{ margin: "2em 0", opacity: "0.6" }}>
+            <small>
+              쉬운 비밀번호를 입력하면 타인의 수정, 삭제가 쉽습니다.
+            </small>
+            <br />
+            <small>
+              음란물, 차별, 비하, 혐오 및 초상권, 저작권 침해 게시물은 민,
+              형사상의 책임을 질 수 있습니다.
+            </small>
+          </div>
         </div>
-      </div>
 
-      {/* draft part */}
-      <Editor editorState={editorState} onChange={setEditorState} />
-    </Form>
+        {/* draft part */}
+        <EditorPost />
+      </Form>
+    </>
   );
 }
 
