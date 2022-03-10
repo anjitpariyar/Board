@@ -54,7 +54,7 @@ const IndexPage = () => {
 
       <Table data={pageData} searchValue={searchValue} />
       <Pagination {...paginationOptions} />
-      <Search onSearch={onSearch} />
+      <Search />
       {/* search */}
 
       <div>
