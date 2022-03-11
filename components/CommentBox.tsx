@@ -32,7 +32,7 @@ const CommentBox: React.FC<Props> = ({
     <>
       <Card
         parent={parent}
-        onClick={() => setCommentId((commentId) => !commentId)}
+        onClick={() => !inside && setCommentId((commentId) => !commentId)}
         inside={inside}
       >
         <Date>{name}</Date>
@@ -69,7 +69,7 @@ const Card = styled.article<{ parent?: boolean; inside?: boolean }>`
   display: flex;
   justify-content: space-between;
   gap: 30px;
-  cursor: pointer;
+  cursor: ${({ inside }) => (inside ? "auto" : "pointer")};
   border-top: 1px solid #eee;
 
   padding: ${({ inside }) => (inside ? "9px 12px 7px" : "12px 0")};
