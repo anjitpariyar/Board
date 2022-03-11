@@ -13,6 +13,7 @@ interface Props {
   child?: boolean;
   threads?: Array<object>;
   key?: string;
+  inside?: boolean;
 }
 
 const CommentBox: React.FC<Props> = ({
@@ -23,6 +24,7 @@ const CommentBox: React.FC<Props> = ({
   date,
   threads,
   child,
+  inside,
 }) => {
   const [commentId, setCommentId] = useState(false);
 
@@ -31,6 +33,7 @@ const CommentBox: React.FC<Props> = ({
       <Card
         parent={parent}
         onClick={() => setCommentId((commentId) => !commentId)}
+        inside={inside}
       >
         <Date>{name}</Date>
         <CardBody>
@@ -39,18 +42,40 @@ const CommentBox: React.FC<Props> = ({
         <Date style={{ textAlign: "right" }}>{date}</Date>
       </Card>
       {commentId && <CommentForm />}
-      <Divider grey={true} style={{ margin: "30px 0" }} />
+
+      {child && (
+        <div style={{ marginBottom: "15px" }}>
+          {threads?.map((data: Props, index) => {
+            return (
+              <>
+                <CommentBox
+                  {...data}
+                  key={index.toString() + data?.date}
+                  inside={true}
+                />
+              </>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
 
 export default CommentBox;
 
-const Card = styled.article<{ parent?: boolean }>`
+const Card = styled.article<{ parent?: boolean; inside?: boolean }>`
   font-size: 13px;
   display: flex;
   justify-content: space-between;
   gap: 30px;
+  cursor: pointer;
+  border-top: 1px solid #eee;
+
+  padding: ${({ inside }) => (inside ? "9px 12px 7px" : "12px 0")};
+  border: ${({ inside }) => inside && "1px solid #ddd"};
+  background-color: ${({ inside }) => inside && "#fafafa"};
+  margin-left: ${({ inside }) => inside && "30px"};
 `;
 
 const CardBody = styled.div`
