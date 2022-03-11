@@ -3,13 +3,14 @@ import { EditorState } from "draft-js";
 import dynamic from "next/dynamic";
 // import apiClient from "../api/api_client";
 import { convertFromRaw, convertToRaw } from "draft-js";
+import styled from "styled-components";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-export default function ArticleEditor({ handleContent }: any) {
+export default function ArticleEditor({ handleContent, height }: any) {
   // constructor(props) {
   //   super(props);
 
@@ -43,41 +44,52 @@ export default function ArticleEditor({ handleContent }: any) {
   // const { editorState } = this.state;
 
   return (
-    <Editor
-      editorState={editorState}
-      toolbarClassName="toolbar-class"
-      wrapperClassName="wrapper-class"
-      editorClassName="editor-class"
-      onEditorStateChange={onEditorStateChange}
-      // toolbarOnFocus
-      toolbar={{
-        options: [
-          "inline",
-          "blockType",
-          "fontSize",
-          "fontFamily",
-          "list",
-          "textAlign",
-          "colorPicker",
-          "link",
-          "embedded",
-          "emoji",
-          "image",
-          "history",
-        ],
-        inline: { inDropdown: true },
-        list: { inDropdown: true },
-        textAlign: { inDropdown: true },
-        link: { inDropdown: true },
-        history: { inDropdown: true },
-        image: {
-          urlEnabled: true,
-          uploadEnabled: false,
-          // uploadCallback: this.uploadImageCallBack,
-          previewImage: true,
-          alt: { present: false, mandatory: false },
-        },
-      }}
-    />
+    <EditorWrapper height={height || "200px"}>
+      <Editor
+        editorState={editorState}
+        toolbarClassName="toolbar-class"
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        onEditorStateChange={onEditorStateChange}
+        // toolbarOnFocus
+        toolbar={{
+          options: [
+            "inline",
+            "blockType",
+            "fontSize",
+            "fontFamily",
+            "list",
+            "textAlign",
+            "colorPicker",
+            "link",
+            "embedded",
+            "emoji",
+            "image",
+            "history",
+          ],
+          inline: { inDropdown: true },
+          list: { inDropdown: true },
+          textAlign: { inDropdown: true },
+          link: { inDropdown: true },
+          history: { inDropdown: true },
+          image: {
+            urlEnabled: true,
+            uploadEnabled: false,
+            // uploadCallback: this.uploadImageCallBack,
+            previewImage: true,
+            alt: { present: false, mandatory: false },
+          },
+        }}
+      />
+    </EditorWrapper>
   );
 }
+
+const EditorWrapper = styled.div<{ height?: string }>`
+  border: 1px solid #e5e5e5;
+  margin-bottom: 2em;
+  .editor-class {
+    height: ${({ height }) => height};
+    padding: 0 1em;
+  }
+`;

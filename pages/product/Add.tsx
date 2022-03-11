@@ -4,6 +4,7 @@ import Head from "next/head";
 import React, { useState, useCallback } from "react";
 import ArticleEditor from "components/EditorPost";
 import { Container } from "styled/Container";
+import { Button } from "styled/Common.styled";
 
 export default function () {
   const [data, setData] = useState<any>({
@@ -76,9 +77,13 @@ export default function () {
 
             {/* draft part */}
             <div>
-              <ArticleEditor handleContent={handleEditorContent} />
+              {/* options */}
+              <ArticleEditor
+                handleContent={handleEditorContent}
+                height={"400px"}
+              />
             </div>
-            <button type="submit">Submit</button>
+            <Button type="submit">등록</Button>
           </Form>
         </Container>
       </main>
