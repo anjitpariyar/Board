@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
-export default function () {
+export default function ({ inside }: { inside?: boolean }) {
   const [data, setData] = useState({
     name: "",
     comment: "",
@@ -28,7 +28,7 @@ export default function () {
     }
   }, [data]);
   return (
-    <Form onSubmit={Submit}>
+    <Form onSubmit={Submit} inside={inside}>
       <Flex>
         <Left>
           {" "}
@@ -66,10 +66,13 @@ export default function () {
   );
 }
 
-const Form = styled.form`
-  border-block: 2px solid #3b4890;
-  padding: 12px 0;
+const Form = styled.form<{ inside?: boolean }>`
+  border-block: ${({ inside }) => !inside && "2px solid #3b4890"};
+  padding: ${({ inside }) => (inside ? "12px" : "12px 0")};
   margin-top: 12px;
+  border: ${({ inside }) => inside && "1px solid #e5e5e5"};
+  background-color: ${({ inside }) => inside && "#fafafa"};
+  margin: ${({ inside }) => inside && "0 0 0px 30px"};
 `;
 
 const InputText = styled.input`

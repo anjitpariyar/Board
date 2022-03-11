@@ -41,7 +41,7 @@ const CommentBox: React.FC<Props> = ({
         </CardBody>
         <Date style={{ textAlign: "right" }}>{date}</Date>
       </Card>
-      {commentId && <CommentForm />}
+      {commentId && <CommentForm inside={true} />}
 
       {child && (
         <div style={{ marginBottom: "15px" }}>
