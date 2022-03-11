@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import Image from "next/image";
+// import Image from "next/image";
 
 import CommentForm from "./CommentForm";
 
@@ -14,6 +14,9 @@ interface Props {
   threads?: Array<object>;
   key?: string;
   inside?: boolean;
+  openComment?: any;
+  id?: number;
+  commentId?: boolean | number;
 }
 
 const CommentBox: React.FC<Props> = ({
@@ -25,14 +28,22 @@ const CommentBox: React.FC<Props> = ({
   threads,
   child,
   inside,
+  id,
+  openComment,
+  commentId,
 }) => {
-  const [commentId, setCommentId] = useState(false);
-
+  const onClick = () => {
+    if (commentId) {
+      openComment(false);
+    } else {
+      openComment(id);
+    }
+  };
   return (
     <>
       <Card
         parent={parent}
-        onClick={() => !inside && setCommentId((commentId) => !commentId)}
+        onClick={() => !inside && onClick()}
         inside={inside}
       >
         <Date>{name}</Date>
@@ -41,7 +52,7 @@ const CommentBox: React.FC<Props> = ({
         </CardBody>
         <Date style={{ textAlign: "right" }}>{date}</Date>
       </Card>
-      {commentId && <CommentForm inside={true} />}
+      {commentId === id && <CommentForm inside={true} />}
 
       {child && (
         <div style={{ marginBottom: "15px" }}>
@@ -88,11 +99,4 @@ const Date = styled.span`
   opacity: 0.6;
   min-width: 150px;
   width: 150px;
-`;
-
-const Divider = styled.hr`
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #eee;
-  margin: 10px 0;
 `;
