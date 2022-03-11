@@ -1,11 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import CommentsWrapper from "components/page/product/CommentsWrapper";
 
 const Details = () => {
   return (
     <div>
-      <div style={{ maxWidth: "900px", padding: "2em" }}>
+      <div>
         <div>
           <Image
             src="https://images.unsplash.com/photo-1548091790-641ab5796e56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8a29yZWFuJTIwYnVzeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
@@ -57,9 +56,6 @@ const Details = () => {
             />
           </div>
         </div>
-
-        {/* comments */}
-        <CommentsWrapper />
       </div>
     </div>
   );

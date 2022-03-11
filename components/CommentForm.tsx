@@ -46,7 +46,7 @@ export default function () {
             onChange={handleChange}
             required
             value={password}
-            type={password}
+            type={"password"}
           />
         </Left>
 
@@ -84,6 +84,8 @@ const InputText = styled.input`
   box-shadow: none;
   font-weight: normal;
   display: block;
+  border: 1px solid #e5e5e5;
+  padding: 13px;
   ::placeholder {
   }
 `;

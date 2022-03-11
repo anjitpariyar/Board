@@ -4,7 +4,7 @@ import styled from "styled-components";
  * The main outer container
  */
 export const Container = styled.div`
-  max-width: 1720px;
+  max-width: 1320px;
   width: 94%;
   margin: auto;
   height: 100%;
