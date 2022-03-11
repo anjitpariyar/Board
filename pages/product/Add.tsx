@@ -72,7 +72,6 @@ export default function () {
 
         {/* draft part */}
         {/* <EditorPost /> */}
-        
       </Form>
     </>
   );
