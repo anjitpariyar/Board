@@ -1,5 +1,11 @@
 {
   "private": true,
+  "author": "Anjit Pariyar",
+  "name": "board",
+  "description": "A Simple UI library like table, board and comments ",
+  "version": "0.0.1",
+  "main": "./lib/main.js",
+  "types": "./lib/main.d.ts",
   "scripts": {
     "dev": "next",
     "build": "next build",

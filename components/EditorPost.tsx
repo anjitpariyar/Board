@@ -10,7 +10,13 @@ const Editor = dynamic(
 );
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-export default function ArticleEditor({ handleContent, height }: any) {
+export default function ArticleEditor({
+  handleContent,
+  height,
+}: {
+  handleContent: (handleEditorContent: any) => void;
+  height: string;
+}) {
   const [editorState, setEditorState] = useState<any>(
     EditorState.createEmpty()
   );
