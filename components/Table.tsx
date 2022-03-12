@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-const Table = ({ data, searchValue }) => {
+const Table = ({ data }) => {
   return (
     <TableWrapper>
       <Thead>

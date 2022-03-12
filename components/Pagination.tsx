@@ -17,7 +17,7 @@ const { Ul, Li, Button } = styleInstance;
 
 const Pagination = ({
   onPageChange,
-  currentPage,
+  currentPage = 1,
   pageSize,
   totalData,
   prev = <span>{"<"}</span>,
@@ -26,6 +26,7 @@ const Pagination = ({
   trimmer = true,
   goto = true,
 }: PaginationOptions) => {
+  // console.log("currentPage", currentPage);
   const [range, setRange]: any[] = useState([]);
 
   const Instance = usePagination({
@@ -67,7 +68,6 @@ const Pagination = ({
     }
     let tempRange = [...Array(end - start + 1).keys()].map((x) => x + start);
     setRange([...tempRange]);
-    console.log("range", range);
   }, [currentPage, totalPageCount]);
 
   return (
