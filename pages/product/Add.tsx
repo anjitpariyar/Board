@@ -18,6 +18,7 @@ export default function () {
   const handleChange = ({ target: { value, name, files } }) => {
     setData({ ...data, [name]: value });
   };
+
   // draft
   const handleEditorContent = (content: any) => {
     console.log("content", content);
@@ -83,7 +84,9 @@ export default function () {
                 height={"400px"}
               />
             </div>
-            <Button type="submit">등록</Button>
+            <Button type="submit" style={{ marginTop: "2em" }}>
+              등록
+            </Button>
           </Form>
         </Container>
       </main>

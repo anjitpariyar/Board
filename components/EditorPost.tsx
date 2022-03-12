@@ -6,19 +6,11 @@ import { convertFromRaw, convertToRaw } from "draft-js";
 import styled from "styled-components";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
-  { ssr: false }
+  { ssr: false, loading: () => <p>loading..</p> }
 );
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default function ArticleEditor({ handleContent, height }: any) {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     editorState: EditorState.createEmpty(),
-  //   };
-  // }
-
   const [editorState, setEditorState] = useState<any>(
     EditorState.createEmpty()
   );
@@ -46,8 +38,8 @@ export default function ArticleEditor({ handleContent, height }: any) {
   return (
     <EditorWrapper height={height || "200px"}>
       <Editor
-        editorState={editorState}
         toolbarClassName="toolbar-class"
+        editorState={editorState}
         wrapperClassName="wrapper-class"
         editorClassName="editor-class"
         onEditorStateChange={onEditorStateChange}
@@ -87,7 +79,6 @@ export default function ArticleEditor({ handleContent, height }: any) {
 
 const EditorWrapper = styled.div<{ height?: string }>`
   border: 1px solid #e5e5e5;
-  margin-bottom: 2em;
   .editor-class {
     height: ${({ height }) => height};
     padding: 0 1em;
