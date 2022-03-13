@@ -1,7 +1,7 @@
 {
   "private": false,
   "author": "Anjit Pariyar",
-  "name": "board",
+  "name": "board-lukuku",
   "description": "A Simple UI library like table, board and comments ",
   "version": "0.0.1",
   "module": "./components/index.tsx",
