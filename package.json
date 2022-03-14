@@ -3,9 +3,9 @@
   "author": "Anjit Pariyar",
   "name": "board-lukuku",
   "description": "A Simple UI library like table, board and comments ",
-  "version": "1.0.5",
-  "module": "./dist/index.tsx",
-  "main": "./dist/index.tsx",
+  "version": "1.0.6",
+  "module": "./dist/components/index.js",
+  "main": "./dist/components/index.js",
   "files": [
     "dist",
     "README.md"
