@@ -15,9 +15,7 @@ export default function ArticleEditor({ handleContent, height }) {
     EditorState.createEmpty()
   );
 
-  const onEditorStateChange = (
-    editorState?: any | { children?: ReactNode }
-  ) => {
+  const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     handleContent(convertToRaw(editorState.getCurrentContent()));
   };
