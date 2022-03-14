@@ -8,6 +8,7 @@ const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default function ArticleEditor({ handleContent, height }) {
@@ -15,9 +16,7 @@ export default function ArticleEditor({ handleContent, height }) {
     EditorState.createEmpty()
   );
 
-  const onEditorStateChange = (
-    editorState?: any | { children?: ReactNode }
-  ) => {
+  const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     handleContent(convertToRaw(editorState.getCurrentContent()));
   };
@@ -36,45 +35,44 @@ export default function ArticleEditor({ handleContent, height }) {
   // const { editorState } = this.state;
 
   return (
-    <EditorWrapper height={height || "200px"}>
-      <Editor
-        /*// @ts-ignore */
-        toolbarClassName="toolbar-class"
-        editorState={editorState}
-        wrapperClassName="wrapper-class"
-        editorClassName="editor-class"
-        onEditorStateChange={onEditorStateChange}
-        // toolbarOnFocus
-        toolbar={{
-          options: [
-            "inline",
-            "blockType",
-            "fontSize",
-            "fontFamily",
-            "list",
-            "textAlign",
-            "colorPicker",
-            "link",
-            "embedded",
-            "emoji",
-            "image",
-            "history",
-          ],
-          inline: { inDropdown: true },
-          list: { inDropdown: true },
-          textAlign: { inDropdown: true },
-          link: { inDropdown: true },
-          history: { inDropdown: true },
-          image: {
-            urlEnabled: true,
-            uploadEnabled: false,
-            // uploadCallback: this.uploadImageCallBack,
-            previewImage: true,
-            alt: { present: false, mandatory: false },
-          },
-        }}
-      />
-    </EditorWrapper>
+    // <EditorWrapper height={height || "200px"}>
+    <Editor
+      toolbarClassName="toolbar-class"
+      editorState={editorState}
+      wrapperClassName="wrapper-class"
+      editorClassName="editor-class"
+      onEditorStateChange={onEditorStateChange}
+      // toolbarOnFocus
+      toolbar={{
+        options: [
+          "inline",
+          "blockType",
+          "fontSize",
+          "fontFamily",
+          "list",
+          "textAlign",
+          "colorPicker",
+          "link",
+          "embedded",
+          "emoji",
+          "image",
+          "history",
+        ],
+        inline: { inDropdown: true },
+        list: { inDropdown: true },
+        textAlign: { inDropdown: true },
+        link: { inDropdown: true },
+        history: { inDropdown: true },
+        image: {
+          urlEnabled: true,
+          uploadEnabled: false,
+          // uploadCallback: this.uploadImageCallBack,
+          previewImage: true,
+          alt: { present: false, mandatory: false },
+        },
+      }}
+    />
+    // </EditorWrapper>
   );
 }
 

@@ -8,6 +8,7 @@ const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default function ArticleEditor({ handleContent, height }) {
@@ -36,7 +37,7 @@ export default function ArticleEditor({ handleContent, height }) {
   return (
     <EditorWrapper height={height || "200px"}>
       <Editor
-        /*// @ts-ignore */
+        // @ts-ignore
         toolbarClassName="toolbar-class"
         editorState={editorState}
         wrapperClassName="wrapper-class"

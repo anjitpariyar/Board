@@ -50,7 +50,6 @@ const Post = () => {
 
           <Details />
           {/* comments */}
-          {/* comments */}
           <CommentsWrapper datas={datas} />
         </Container>
       </div>

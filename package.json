@@ -3,7 +3,7 @@
   "author": "Anjit Pariyar",
   "name": "board-lukuku",
   "description": "A Simple UI library like table, board and comments ",
-  "version": "1.0.3",
+  "version": "1.0.44",
   "module": "./components/index.tsx",
   "main": "./components/index.tsx",
   "files": [
@@ -17,7 +17,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
-    "build": "rm -rf dist && NODE_ENV=production babel ./components --out-dir dist --copy-files",
+    "build": "tsc",
     "start": "next start",
     "type-check": "tsc"
   },
