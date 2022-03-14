@@ -6,7 +6,7 @@ import { convertFromRaw, convertToRaw } from "draft-js";
 import styled from "styled-components";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
-  { ssr: false, loading: () => <p>loading..</p> }
+  { ssr: false }
 );
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 

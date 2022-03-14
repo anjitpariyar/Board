@@ -3,7 +3,7 @@
   "author": "Anjit Pariyar",
   "name": "board-lukuku",
   "description": "A Simple UI library like table, board and comments ",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "module": "./components/index.tsx",
   "main": "./components/index.tsx",
   "files": [
@@ -14,6 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/anjitpariyar/Board.git"
   },
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
     "build": "rm -rf dist && NODE_ENV=production babel ./components --out-dir dist --copy-files",
@@ -33,6 +34,7 @@
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "@types/draft-js": "^0.11.9",
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
