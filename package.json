@@ -3,12 +3,17 @@
   "author": "Anjit Pariyar",
   "name": "board-lukuku",
   "description": "A Simple UI library like table, board and comments ",
-  "version": "1.0.44",
-  "module": "./components/index.tsx",
-  "main": "./components/index.tsx",
+  "version": "1.0.45",
+  "module": "./dist/index.tsx",
+  "main": "./dist/index.tsx",
   "files": [
     "dist",
     "README.md"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "lukuku"
   ],
   "repository": {
     "type": "git",
