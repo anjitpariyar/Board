@@ -1,7 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import SayHello from "board-lukuku";
+// import { Details } from "board-lukuku";
+import dynamic from "next/dynamic";
+const DynamicComponent = dynamic(
+  () => import("board-lukuku/lib/esm/index").then((mod) => mod.RichEditor),
+  { ssr: false, loading: () => <p>...</p> }
+);
+
 const Home: NextPage = () => {
+  const handleEditorContent = (content: any) => {
+    console.log("content", content);
+  };
   return (
     <div>
       <Head>
@@ -10,7 +19,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <SayHello name="Anjit" />
+        <DynamicComponent handleContent={handleEditorContent} />
       </main>
     </div>
   );

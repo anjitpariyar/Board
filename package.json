@@ -1,12 +1,12 @@
 {
   "name": "board-lukuku",
-  "version": "1.0.0",
+  "version": "1.0.63",
   "description": "simple ui library for team lukuku",
   "repository": "https://github.com/anjitpariyar/Board.git",
   "author": "anjitpariyar <anjitpariyar@gmail.com>",
   "license": "MIT",
   "private": false,
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/esm/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
   "files": [
@@ -22,10 +22,16 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@types/draft-js": "^0.11.9",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
+    "@types/react-draft-wysiwyg": "^1.13.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "draft-js": "^0.11.7",
+    "react-draft-wysiwyg": "^1.14.7"
   }
 }

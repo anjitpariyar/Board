@@ -1,5 +1,2 @@
-/// <reference types="react" />
-declare const SayHello: ({ name }: {
-    name: string;
-}) => JSX.Element;
-export default SayHello;
+export { default as Details } from "./components/Details";
+export { default as RichEditor } from "./components/RichEditor";
