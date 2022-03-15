@@ -9,8 +9,9 @@ import { Editor } from "react-draft-wysiwyg";
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default function RichEditor({ handleContent }: EditorProps) {
-  const [editorState, setEditorState] = useState<any>();
-  // EditorState.createEmpty()
+  const [editorState, setEditorState] = useState<any>(
+    EditorState.createEmpty()
+  );
 
   const onEditorStateChange = (editorState: any) => {
     setEditorState(editorState);
