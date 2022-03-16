@@ -2,37 +2,21 @@
 # yarn lockfile v1
 
 
-"@types/draft-js@*", "@types/draft-js@^0.11.9":
-  version "0.11.9"
-  resolved "https://registry.npmjs.org/@types/draft-js/-/draft-js-0.11.9.tgz"
-  integrity sha512-cQJBZjjIlGaPA1tOY+wGz2KhlPtAAZOIXpUvGPxPRw5uzZ2tcj8m6Yu1QDV9YgP36+cqE3cUvgkARBzgUiuI/Q==
-  dependencies:
-    "@types/react" "*"
-    immutable "~3.7.4"
-
 "@types/prop-types@*":
   version "15.7.4"
-  resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.4.tgz"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
 "@types/react-dom@^17.0.13":
   version "17.0.13"
-  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-17.0.13.tgz"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.13.tgz#a3323b974ee4280070982b3112351bb1952a7809"
   integrity sha512-wEP+B8hzvy6ORDv1QBhcQia4j6ea4SFIBttHYpXKPFZRviBvknq0FRh3VrIxeXUmsPkwuXVZrVGG7KUVONmXCQ==
   dependencies:
     "@types/react" "*"
 
-"@types/react-draft-wysiwyg@^1.13.4":
-  version "1.13.4"
-  resolved "https://registry.npmjs.org/@types/react-draft-wysiwyg/-/react-draft-wysiwyg-1.13.4.tgz"
-  integrity sha512-wasD1t78JDmQvdPDRPf/mf5FSHMlncunW0F6KMOKB3awzi3Wi21yHMGsRAUOkfTr3R8F+yceG8fSLz0kYWu/QA==
-  dependencies:
-    "@types/draft-js" "*"
-    "@types/react" "*"
-
 "@types/react@*", "@types/react@^17.0.40":
   version "17.0.40"
-  resolved "https://registry.npmjs.org/@types/react/-/react-17.0.40.tgz"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.40.tgz#dc010cee6254d5239a138083f3799a16638e6bad"
   integrity sha512-UrXhD/JyLH+W70nNSufXqMZNuUD2cXHu6UjCllC6pmOQgBX4SGXOH8fjRka0O0Ee0HrFxapDD8Bwn81Kmiz6jQ==
   dependencies:
     "@types/prop-types" "*"
@@ -41,15 +25,10 @@
 
 "@types/scheduler@*":
   version "0.16.2"
-  resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
+  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
 csstype@^3.0.2:
   version "3.0.11"
-  resolved "https://registry.npmjs.org/csstype/-/csstype-3.0.11.tgz"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.11.tgz#d66700c5eacfac1940deb4e3ee5642792d85cd33"
   integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
-
-immutable@~3.7.4:
-  version "3.7.6"
-  resolved "https://registry.npmjs.org/immutable/-/immutable-3.7.6.tgz"
-  integrity sha1-E7TTyxK++hVIKib+Gy665kAHHks=

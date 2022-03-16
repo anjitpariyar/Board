@@ -1,32 +1,24 @@
-#Board
+# React typescript as NPM
+
+# its a test , do not use it.
 
 ## Installation
 
 ```
-nmp i  board-lukuku
+npm i test-react-ts
 ```
 
-## import
+## Import
 
 ```
-import dynamic from "next/dynamic";
-const DynamicComponent = dynamic(
-  () => import("board-lukuku/lib/esm/index").then((mod) => mod.RichEditor),
-  { ssr: false, loading: () => <p>...</p> }
-);
+import {SayHello} from "test-react-ts";
 
 ```
 
 ## Usages
 
 ```
- <DynamicComponent handleContent={handleEditorContent} />
-```
+      <SayHello name="Anjit" />
 
-## Props
 
-```
- const handleEditorContent = (content: any) => {
-    console.log("content", content);
-  };
 ```

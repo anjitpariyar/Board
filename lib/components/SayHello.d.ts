@@ -1,5 +1,5 @@
 /// <reference types="react" />
-declare const Details: ({ name }: {
+declare const SayHello: ({ name }: {
     name: string;
 }) => JSX.Element;
-export default Details;
+export default SayHello;
