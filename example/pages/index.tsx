@@ -1,16 +1,22 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-// import { Details } from "board-lukuku";
 import dynamic from "next/dynamic";
-const DynamicComponent = dynamic(
-  () => import("board-lukuku/lib/esm/index").then((mod) => mod.RichEditor),
-  { ssr: false, loading: () => <p>...</p> }
+// details
+const Details = dynamic(
+  () => import("board-lukuku").then((mod) => mod.Details),
+  { loading: () => <p>...</p>, ssr: false }
+);
+// richtextEditor
+const RichEditor = dynamic(
+  () => import("board-lukuku").then((mod) => mod.RichEditor),
+  { loading: () => <p>...</p>, ssr: false }
 );
 
 const Home: NextPage = () => {
   const handleEditorContent = (content: any) => {
     console.log("content", content);
   };
+  console.log(typeof RichEditor);
   return (
     <div>
       <Head>
@@ -19,7 +25,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <DynamicComponent handleContent={handleEditorContent} />
+        <Details />
       </main>
     </div>
   );

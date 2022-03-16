@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Details = () => {
+const Details = ({ name }: { name: string }) => {
+  const [first, setfirst] = useState("name");
+  useEffect(() => {
+    setfirst(name);
+  }, []);
   return (
     <div>
+      <h1>{first}</h1>
       <div>
         <div>
           <img

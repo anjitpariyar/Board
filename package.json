@@ -29,6 +29,7 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
+    "board-lukuku": "^1.0.7",
     "draft-js": "^0.11.7",
     "react-draft-wysiwyg": "^1.14.7"
   }
