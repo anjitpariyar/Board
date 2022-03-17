@@ -1,8 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { SayHello } from "board";
+import React, { useState, useEffect } from "react";
 
 const Home: NextPage = () => {
+  const [first, setfirst] = useState("first");
+  useEffect(() => {
+    setfirst("last");
+
+    return () => {};
+  }, []);
+
   return (
     <div>
       <Head>
@@ -11,8 +19,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h2>Create Next App</h2>
-        <SayHello name="asda" />
+        <h2>Create Next App {first}</h2>
+
+        {/* <SayHello name="asda" /> */}
       </main>
     </div>
   );
