@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 // type import
 import { PaginationOptions } from "interfaces";
-// import { ParsedUrlQuery } from "querystring";
 
 const IndexPage = () => {
   const router = useRouter();

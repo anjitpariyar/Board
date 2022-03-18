@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@types/styled-components": "^5.1.24",
     "draft-js": "^0.11.7",
     "next": "latest",
     "react": "^17.0.2",

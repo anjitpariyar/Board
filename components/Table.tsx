@@ -3,14 +3,33 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const Table = ({ data }) => {
+  // console.log(data);
+  const columns = [
+    {
+      title: "ID",
+      dataIndex: "id",
+    },
+    {
+      title: "Title",
+      dataIndex: "title",
+    },
+    {
+      title: "Writer",
+      dataIndex: "writer",
+    },
+    {
+      title: "Viewcount",
+      dataIndex: "viewcount",
+    },
+  ];
+  console.log(columns);
   return (
     <TableWrapper>
       <Thead>
         <Tr>
-          <Th>ID</Th>
-          <Th>title</Th>
-          <Th>writer</Th>
-          <Th>viewcount</Th>
+          {columns.map(({ title, dataIndex }) => {
+            return <Th key={dataIndex}>{title}</Th>;
+          })}
         </Tr>
       </Thead>
       <tbody>
