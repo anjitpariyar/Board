@@ -38,4 +38,6 @@ export interface TableBoardData {
   prev?: ReactNode;
   next?: ReactNode;
   showCode?: boolean;
+  onPageChange: (page: number) => void;
+  page: number | undefined;
 }

@@ -3,9 +3,7 @@ import { Container } from "styled/Container";
 import Link from "next/link";
 
 import TableBoard from "components/TableBoard";
-
-// type import
-import { PaginationOptions } from "interfaces";
+import { useRouter } from "next/router";
 
 const IndexPage = () => {
   const columns = [
@@ -35,20 +33,23 @@ const IndexPage = () => {
     },
   ];
 
-  //on page change
-  // for now this is a page controller
-  const onPageChange = (page) => {
-    // router.push(`/?page=${page}`, undefined, { shallow: true });
-  };
+  const router = useRouter();
+  const page = router.query.page ? +router.query.page : undefined;
 
   const settings = {
     data: sampleTablePropsData, //data as json
     columns: columns, // way to use data
-    pageSize: 12, // default pagesize is 10
+    pageSize: 10, // default pagesize is 10
     activePage: 1, // default is 1
-    prev: <span>{"prev"}</span>, // default is <,
-    next: <span>{"next"}</span>, // default is >,
+    prev: <span>{"<"}</span>, // default is <,
+    next: <span>{">"}</span>, // default is >,
     showCode: true, // default is false
+    page: page,
+    onPageChange: (n) => {
+      if (n) {
+        router.push(`/?page=${n}`, undefined, { shallow: true });
+      }
+    }, // required
   };
 
   return (

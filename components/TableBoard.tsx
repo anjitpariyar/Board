@@ -2,7 +2,6 @@ import Pagination from "./Pagination";
 import Table from "./Table";
 import { useState, useEffect } from "react";
 import { useTable } from "Hook/Board";
-import { useRouter } from "next/router";
 import { PaginationOptions, TableBoardData } from "interfaces";
 
 export default function TableBoard({
@@ -13,20 +12,10 @@ export default function TableBoard({
   next,
   showCode,
   columns,
+  onPageChange,
+  page,
 }: TableBoardData) {
-  const router = useRouter();
-
-  // const { page }: { page: any } = parseInt(router.query.photoId as string, 10);
-  const page = router.query.page ? +router.query.page : undefined;
-  // console.log(typeof page);
-  // crate a instance with usePagination
   const [currentPage, setCurrentPage] = useState<number>(activePage || 1); // start with one
-  console.log(currentPage);
-  //on page change
-  // for now this is a page controller
-  const onPageChange = (page) => {
-    router.push(`/?page=${page}`, undefined, { shallow: true });
-  };
 
   const tableOption = {
     currentPage: currentPage, //defult 1
