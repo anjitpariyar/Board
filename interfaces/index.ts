@@ -3,6 +3,7 @@
 // example, to import the interface below do:
 //
 // import { User } from 'path/to/interfaces';
+import { ReactNode } from "react";
 
 export interface TableProps {
   id: string;
@@ -27,4 +28,14 @@ export interface PaginationOptions {
   paginationSize?: number; //default is 5
   trimmer?: boolean; // default is true
   goto?: boolean; // default is true, that show an example
+}
+
+export interface TableBoardData {
+  data: any;
+  columns: any;
+  pageSize?: number;
+  activePage?: number;
+  prev?: ReactNode;
+  next?: ReactNode;
+  showCode?: boolean;
 }

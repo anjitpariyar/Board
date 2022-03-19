@@ -1,30 +1,12 @@
 import React, { useEffect, useMemo } from "react";
 import styled from "styled-components";
-import Link from "next/link";
 
-const Table = ({ data }) => {
+const Table = ({ data, columns }) => {
   // console.log(data);
-  const columns = [
-    {
-      title: "ID",
-      dataIndex: "id",
-    },
-    {
-      title: "Title",
-      dataIndex: "title",
-    },
-    {
-      title: "Writer",
-      dataIndex: "writer",
-    },
-    {
-      title: "Viewcount",
-      dataIndex: "viewcount",
-    },
-  ];
-  console.log(columns);
+
   return (
     <TableWrapper>
+      {/* header loop */}
       <Thead>
         <Tr>
           {columns.map(({ title, dataIndex }) => {
@@ -32,18 +14,14 @@ const Table = ({ data }) => {
           })}
         </Tr>
       </Thead>
+      {/* body loop */}
       <tbody>
         {data.map((item) => {
           return (
             <Tr key={item.id}>
-              <Td>{item.id}</Td>
-              <Td>
-                <Link href={"/product/" + item.id}>
-                  <a>{item.title}</a>
-                </Link>
-              </Td>
-              <Td>{item.writer}</Td>
-              <Td>{item.viewcount}</Td>
+              {columns.map(({ value, dataIndex }) => {
+                return <Td key={dataIndex}>{value(item)}</Td>;
+              })}
             </Tr>
           );
         })}
@@ -57,6 +35,7 @@ export default Table;
 const TableWrapper = styled.table`
   width: 100%;
   text-align: left;
+  border-collapse: collapse;
 `;
 export const Thead = styled.thead``;
 export const Tbody = styled.tbody``;
