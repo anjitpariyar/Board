@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-const Goto = ({ totalPageCount, onPageChange }) => {
-  const [page, setPage] = useState("");
+const Goto = ({ data, onPageChange, pageSize }) => {
+  const totalPageCount: number = parseInt(data.length, 10) / pageSize;
+  console.log(typeof totalPageCount);
+  const [page, setPage] = useState<number | string>("");
   const onChange = ({ target: { value } }) => {
-    setPage(value);
+    if (value) setPage(parseInt(value, 10));
   };
 
   useEffect(() => {
     if (page && page <= totalPageCount) {
-      onPageChange(parseInt(page));
+      onPageChange(page);
     }
   }, [page]);
 

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import CommentForm from "components/CommentForm";
-import CommentBox from "components/CommentBox";
+// import CommentForm from "components/CommentForm";
 
-const CommentsWrapper = ({ datas }) => {
+const CommentsWrapper = ({ datas, CommentForm, CommentBox }) => {
   const [commentId, setCommentId] = useState(false);
   const openComment = (id) => {
     setCommentId(id);

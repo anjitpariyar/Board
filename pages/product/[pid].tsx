@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import Details from "components/page/product/Details";
 import { Container } from "styled/Container";
 import CommentsWrapper from "components/page/product/CommentsWrapper";
+import CommentForm from "components/CommentForm";
+import CommentBox from "components/CommentBox";
+
 const Post = () => {
   const router = useRouter();
   const { pid } = router.query;
@@ -46,11 +49,13 @@ const Post = () => {
       </Head>
       <div>
         <Container>
-          {pid}
-
-          <Details />
+          <Details pid={pid} />
           {/* comments */}
-          <CommentsWrapper datas={datas} />
+          <CommentsWrapper
+            datas={datas}
+            CommentForm={CommentForm}
+            CommentBox={CommentBox}
+          />
         </Container>
       </div>
     </>
