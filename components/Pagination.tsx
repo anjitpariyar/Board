@@ -37,6 +37,8 @@ const Pagination = ({
 
   const { totalPageCount } = Instance;
 
+  const [trimmerState, setTrimmerState] = useState(trimmer);
+
   //options
   // color = "#000",
   // backgroundColor = "transparent",
@@ -68,7 +70,14 @@ const Pagination = ({
     }
     let tempRange = [...Array(end - start + 1).keys()].map((x) => x + start);
     setRange([...tempRange]);
+    console.log("totalPageCount", totalPageCount);
   }, [currentPage, totalPageCount]);
+
+  useEffect(() => {
+    if (totalPageCount <= paginationSize) {
+      setTrimmerState(false);
+    }
+  }, [totalPageCount]);
 
   return (
     <>
@@ -80,7 +89,7 @@ const Pagination = ({
         >
           {prev}
         </Button>
-        {trimmer ? (
+        {trimmerState ? (
           <>
             <Li
               key={0}
