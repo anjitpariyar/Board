@@ -39,7 +39,7 @@ const IndexPage = () => {
   const settings = {
     data: sampleTablePropsData, //data as json
     columns: columns, // way to use data
-    pageSize: 18, // default pagesize is 10
+    pageSize: 50, // default pagesize is 10
     activePage: 1, // default is 1
     prev: <span>{"<"}</span>, // default is <,
     next: <span>{">"}</span>, // default is >,

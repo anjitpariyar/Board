@@ -82,13 +82,15 @@ const Pagination = ({
   return (
     <>
       <Ul>
-        <Button
-          disabled={currentPage === 1}
-          onClick={() => PrevFunc()}
-          key="-1"
-        >
-          {prev}
-        </Button>
+        {totalPageCount > 1 && (
+          <Button
+            disabled={currentPage === 1}
+            onClick={() => PrevFunc()}
+            key="-1"
+          >
+            {prev}
+          </Button>
+        )}
         {trimmerState ? (
           <>
             <Li
@@ -134,13 +136,15 @@ const Pagination = ({
             );
           })
         )}
-        <Button
-          disabled={currentPage === totalPageCount}
-          onClick={() => NextFunc()}
-          key={totalPageCount + 10}
-        >
-          {next}
-        </Button>
+        {totalPageCount > 1 && (
+          <Button
+            disabled={currentPage === totalPageCount}
+            onClick={() => NextFunc()}
+            key={totalPageCount + 10}
+          >
+            {next}
+          </Button>
+        )}
       </Ul>
       {goto && (
         <Goto totalPageCount={totalPageCount} onPageChange={onPageChange} />
