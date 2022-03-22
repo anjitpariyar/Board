@@ -15,7 +15,9 @@ const Post = () => {
   const page = router.query.page ? +router.query.page : undefined;
   const onPageChange = (n) => {
     if (n) {
-      router.push(`/?page=${n}`, undefined, { shallow: true });
+      router.push(`/product/${pid}/?page=${n}`, undefined, {
+        shallow: true,
+      });
     }
   };
   const settings = {
