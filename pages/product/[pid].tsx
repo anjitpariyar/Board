@@ -3,44 +3,32 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Details from "components/page/product/Details";
 import { Container } from "styled/Container";
-import CommentsWrapper from "components/page/product/CommentsWrapper";
+import CommentsBoard from "components/CommentsBoard";
 import CommentForm from "components/CommentForm";
 import CommentBox from "components/CommentBox";
+import { commentsJson } from "utils/sample-data";
 
 const Post = () => {
   const router = useRouter();
   const { pid } = router.query;
   // comments data
-  const datas = [
-    {
-      name: "しゅが?はぁと☆",
-      id: 1,
-      text: " 저 해봤어요~ 간편하게 잘 되어있더라고요. 문의글 남기면 금방 전화오고 빨라요!",
-      date: "2022.02.11 13:21",
-      parent: true,
-      child: true,
-      threads: [
-        {
-          id: 3,
-
-          name: "しゅが?はぁと☆",
-          text: "① 아메바 같은 단세포 2030개보지년들하고 ② 40대 닭대가리 패션좌파 앰창년놈들 ③ 슨상교 좀비 홍어조선족들 이 세부류 애미창년들이 나라 망치려고 개지랄 염병질 오지게 함 싸그리 참수 효시가 답이랑께",
-          date: "2022.02.11 13:21",
-          parent: false,
-        },
-      ],
-    },
-    {
-      id: 2,
-      me: true,
-      name: "しゅが?はぁと☆",
-      text: " ① 아메바 같은 단세포 2030개보지년들하고 ② 40대 닭대가리 패션좌파 앰창년놈들 ③ 슨상교 좀비 홍어조선족들 이 세부류 애미창년들이 나라 망치려고 개지랄 염병질 오지게 함 싸그리 참수 효시가 답이랑께",
-      date: "2022.02.11 13:21",
-      parent: true,
-      child: false,
-      //   threads: [],
-    },
-  ];
+  const page = router.query.page ? +router.query.page : undefined;
+  const onPageChange = (n) => {
+    if (n) {
+      router.push(`/?page=${n}`, undefined, { shallow: true });
+    }
+  };
+  const settings = {
+    data: commentsJson, //data as json
+    pageSize: 20, // default pagesize is 10
+    activePage: 1, // default is 1
+    prev: <span>{"<"}</span>, // default is <,
+    next: <span>{">"}</span>, // default is >,
+    page: page,
+    onPageChange: onPageChange, // required
+    CommentForm: CommentForm, //required
+    CommentBox: CommentBox, //required
+  };
   return (
     <>
       {" "}
@@ -51,11 +39,7 @@ const Post = () => {
         <Container>
           <Details pid={pid} />
           {/* comments */}
-          <CommentsWrapper
-            datas={datas}
-            CommentForm={CommentForm}
-            CommentBox={CommentBox}
-          />
+          <CommentsBoard {...settings} />
         </Container>
       </div>
     </>
